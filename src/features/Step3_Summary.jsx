@@ -52,7 +52,7 @@
 
 import React from 'react';
 
-const Step3Summary = ({ data, onNext, onBack }) => {
+const Summary = ({ data, onNext, onBack }) => {
   // Mock calculation: Base price + Service Fee
   const serviceFee = 25;
   const totalAmount = (data.price || 0) + serviceFee;
@@ -62,11 +62,17 @@ const Step3Summary = ({ data, onNext, onBack }) => {
       <p className="step-indicator">STEP 3 OF 4: SUMMARY</p>
       <h2>3. Pricing & Order Summary</h2>
       
-      <div className="summary-card">
-        <p><strong>Pickup:</strong> {data.pickup}</p>
-        <p><strong>Drop:</strong> {data.drop}</p>
-        <p><strong>Vehicle:</strong> <span className="capitalize">{data.vehicle}</span></p>
-      </div>
+     
+        <div className="summary-card">
+  <p><strong>Pickup:</strong> {data.pickup}</p>
+  <p><strong>Drop:</strong> {data.drop}</p>
+  <p><strong>Vehicle:</strong> <span className="capitalize">{data.vehicle}</span></p>
+  
+  {data.notes && (
+    <p><strong>Instructions:</strong> {data.notes}</p>
+  )}
+</div>
+
 
       <div className="price-breakdown">
         <h3>Fare Breakdown</h3>
@@ -94,4 +100,4 @@ const Step3Summary = ({ data, onNext, onBack }) => {
   );
 };
 
-export default Step3Summary;
+export default Summary;
