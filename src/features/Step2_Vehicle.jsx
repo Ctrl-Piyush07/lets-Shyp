@@ -6,49 +6,51 @@ const VEHICLES = [
   { id: 'truck', name: 'Truck', basePrice: 500, maxWeight: '2000kg', icon: '🚛' },
 ];
 
-const Vehicle = ({ data, updateData, onNext, onBack }) => {
+const Step2Vehicle = ({ data, updateData, onNext, onBack }) => {
   
-  const handleSelect = (vehicle) => {
+  const handleSelect = (v) => {
     // EDGE CASE: Price change after vehicle selection
-    // We update both the vehicle ID and the base price
+    // This updates the global state in App.js immediately
     updateData({ 
-      vehicle: vehicle.id, 
-      price: vehicle.basePrice // Mocked base price
+      vehicle: v.id, 
+      price: v.basePrice 
     });
   };
 
   return (
-    <div className="step-container">
-      <h2>Select Vehicle</h2>
-      <p className="hint">Choose a vehicle based on your package size.</p>
+    <div className="step-content">
+      <h2>2. Select Vehicle</h2>
+      <p className="hint">Select a vehicle that fits your package weight.</p>
 
-      <div className="vehicle-grid">
+      <div className="vehicle-list">
         {VEHICLES.map((v) => (
           <div 
             key={v.id}
-            className={`vehicle-card ${data.vehicle === v.id ? 'active' : ''}`}
+            className={`vehicle-card ${data.vehicle === v.id ? 'selected' : ''}`}
             onClick={() => handleSelect(v)}
           >
-            <span className="icon">{v.icon}</span>
-            <h3>{v.name}</h3>
-            <p>Max Weight: {v.maxWeight}</p>
-            <p className="price">Starting from ₹{v.basePrice}</p>
+            <div className="vehicle-icon">{v.icon}</div>
+            <div className="vehicle-info">
+              <h3>{v.name}</h3>
+              <p>Max Weight: {v.maxWeight}</p>
+              <p className="price-tag">Base Fare: ₹{v.basePrice}</p>
+            </div>
           </div>
         ))}
       </div>
 
       <div className="button-group">
-        <button onClick={onBack} className="back-btn">Back</button>
+        <button className="back-btn" onClick={onBack}>Back</button>
         <button 
-          disabled={!data.vehicle} 
+          className="next-btn" 
           onClick={onNext} 
-          className="next-btn"
+          disabled={!data.vehicle} // Button stays disabled until a vehicle is picked
         >
-          Next: Summary
+          Confirm Summary
         </button>
       </div>
     </div>
   );
 };
 
-export default Vehicle;
+export default Step2Vehicle;
