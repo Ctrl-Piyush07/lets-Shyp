@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import './App.css';
 
 // Importing our custom step components
-import Step1Address from './features/Step1_Address';
-import Step2Vehicle from './features/Step2_Vehicle';
-import Step3Summary from './features/Step3_Summary';
-import Step4Checkout from './features/Step4_Checkout';
-import Step5Confirmation from './features/Step5_Confirmation';
+import Address from './features/Step1_Address';
+import Vehicle from './features/Step2_Vehicle';
+import Summary from './features/Step3_Summary';
+import Checkout from './features/Step4_Checkout';
+import Confirmation from './features/Step5_Confirmation';
 
 function App() {
   // 1. Step Tracker (Which screen are we on?)
@@ -22,20 +22,29 @@ function App() {
     customer: { name: '', phone: '' }
   });
 
-  // 3. Logic to update data and handle Edge Cases
-  const updateData = (newData) => {
-    setFormData((prev) => {
-      const updated = { ...prev, ...newData };
+const updateData = (newData) => {
+  setFormData((prev) => {
+    let updated = { ...prev, ...newData };
 
-      // EDGE CASE: If pickup or drop changes, reset vehicle and price
-      // This forces the user to re-select after changing the route
-      if (newData.pickup || newData.drop) {
-        updated.vehicle = null;
+    // Agar Pickup ya Drop change hua, toh naya random distance aur price calculate karo
+    if (newData.pickup || newData.drop) {
+      if (updated.pickup && updated.drop) {
+        // Mock distance calculation (1 to 20 km)
+        const mockDistance = Math.floor(Math.random() * 20) + 1;
+        
+        // Base rates based on vehicle (agar vehicle selected hai toh)
+        const rates = { bike: 10, van: 30, truck: 100 };
+        const baseRate = rates[updated.vehicle] || 50; 
+        
+        updated.price = baseRate * mockDistance;
+      } else {
         updated.price = 0;
       }
-      return updated;
-    });
-  };
+    }
+    return updated;
+  });
+};
+
 
   // 4. Navigation Functions
   const nextStep = () => setStep((prev) => prev + 1);

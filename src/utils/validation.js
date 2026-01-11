@@ -1,14 +1,21 @@
-export const BLOCKED_ZIPS = ['12345', '00000']; // mock blocked codes
+// src/utils/validation.js
+export const BLOCKED_ZIPS = ['12345', '00000'];
 
-export const validateAddress = (address) => {
-  if (!address || address.length < 10) {
-    return "Please enter a full address (min 10 characters).";
-  }
-  
-  const hasBlockedZip = BLOCKED_ZIPS.some(zip => address.includes(zip));
-  if (hasBlockedZip) {
-    return "Sorry, we currently do not service this area.";
+export const validateAddress = (pickup, drop) => {
+  // 1. Individually check Pickup for blocked zips
+  if (pickup && BLOCKED_ZIPS.some(zip => pickup.includes(zip))) {
+    return "Sorry, we don't service this pickup area.";
   }
 
-  return ""; // No error
+  // 2. Individually check Drop for blocked zips
+  if (drop && BLOCKED_ZIPS.some(zip => drop.includes(zip))) {
+    return "Sorry, we don't service this destination.";
+  }
+
+  // 3. Check for Same Address (only if both are filled)
+  if (pickup && drop && pickup.toLowerCase().trim() === drop.toLowerCase().trim()) {
+    return "Pickup and Drop address cannot be the same!";
+  }
+
+  return ""; 
 };

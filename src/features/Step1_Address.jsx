@@ -2,17 +2,28 @@ import React, { useState, useEffect } from 'react';
 import { validateAddress } from '../utils/validation';
 
 const Address = ({ data, updateData, onNext }) => {
-  const [errors, setErrors] = useState({ pickup: '', drop: '' });
+  // Hum ek single error string use karenge simplify karne ke liye
+  const [errorMsg, setErrorMsg] = useState("");
 
-  // Real-time validation for the Edge Case
+  // Real-time validation
   useEffect(() => {
-    const pError = data.pickup ? validateAddress(data.pickup) : "";
-    const dError = data.drop ? validateAddress(data.drop) : "";
-    setErrors({ pickup: pError, drop: dError });
+    // validateAddress ko dono fields pass karo
+    const validationResult = validateAddress(data.pickup, data.drop);
+    setErrorMsg(validationResult);
   }, [data.pickup, data.drop]);
 
-  // Next button is only enabled if there's text AND no validation errors
-  const isInvalid = !data.pickup || !data.drop || errors.pickup || errors.drop;
+  // Button tab disable hoga jab fields empty honge ya error hoga
+  const isInvalid = !data.pickup || !data.drop || errorMsg !== "";
+
+  const handleNext = () => {
+    // Final check before moving to next step
+    const finalError = validateAddress(data.pickup, data.drop);
+    if (finalError) {
+      setErrorMsg(finalError); 
+      return; 
+    }
+    onNext(); 
+  };
 
   return (
     <div className="step-content">
@@ -26,7 +37,6 @@ const Address = ({ data, updateData, onNext }) => {
           value={data.pickup}
           onChange={(e) => updateData({ pickup: e.target.value })}
         />
-        {errors.pickup && <p className="error-text">{errors.pickup}</p>}
       </div>
 
       <div className="input-group">
@@ -37,8 +47,10 @@ const Address = ({ data, updateData, onNext }) => {
           value={data.drop}
           onChange={(e) => updateData({ drop: e.target.value })}
         />
-        {errors.drop && <p className="error-text">{errors.drop}</p>}
       </div>
+
+      {/* ERROR DISPLAY AREA */}
+      {errorMsg && <p className="error-text" style={{color: 'red', fontWeight: 'bold'}}>{errorMsg}</p>}
 
       <div className="input-group">
         <label>Delivery Instructions (Optional)</label>
@@ -51,8 +63,9 @@ const Address = ({ data, updateData, onNext }) => {
 
       <button 
         className="next-btn" 
-        onClick={onNext} 
+        onClick={handleNext} 
         disabled={isInvalid}
+        style={{ backgroundColor: isInvalid ? '#ccc' : '#007bff', cursor: isInvalid ? 'not-allowed' : 'pointer' }}
       >
         Select Vehicle
       </button>
