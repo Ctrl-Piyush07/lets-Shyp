@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Step4Checkout = ({ data, updateData, onNext, onBack }) => {
+const Checkout = ({ data, updateData, onNext, onBack }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Validation: Name > 2 chars and Phone exactly 10 digits
@@ -88,4 +88,4 @@ const Step4Checkout = ({ data, updateData, onNext, onBack }) => {
   );
 };
 
-export default Step4Checkout;
+export default Checkout;
