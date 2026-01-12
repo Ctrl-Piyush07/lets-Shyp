@@ -31,7 +31,7 @@ const Vehicle = ({ data, updateData, onNext, onBack }) => {
             onClick={() => handleSelect(v)}
             style={{
               display: 'flex',
-              alignItems: 'center', // Aligns icon with text
+              alignItems: 'center', 
               gap: '20px',
               padding: '20px',
               border: data.vehicle === v.id ? '2px solid var(--ls-navy)' : '2px solid #EDF0F5',
@@ -41,7 +41,7 @@ const Vehicle = ({ data, updateData, onNext, onBack }) => {
               backgroundColor: data.vehicle === v.id ? '#F0F4FF' : '#fff'
             }}
           >
-            {/* ICON ALIGNED TO THE LEFT OF TEXT */}
+          
             <div className="vehicle-icon" style={{ fontSize: '40px' }}>{v.icon}</div>
             
             <div className="vehicle-info" style={{ textAlign: 'left' }}>
@@ -55,7 +55,7 @@ const Vehicle = ({ data, updateData, onNext, onBack }) => {
         ))}
       </div>
 
-      {/* BUTTONS IN THE SAME ROW */}
+  
       <div className="button-group" style={{ display: 'flex', gap: '15px', marginTop: '30px' }}>
         <button 
           className="back-btn" 

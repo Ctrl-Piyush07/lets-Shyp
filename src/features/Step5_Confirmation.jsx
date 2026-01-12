@@ -12,7 +12,6 @@ const Confirmation = () => {
   return (
     <div className="step-content success-screen" style={{ textAlign: 'center', padding: '8px 10px' }}>
       
-      {/* 1. ORANGE TICK BAR: Matched with Lets Shyp accent */}
       <div className="success-icon" style={{ 
         fontSize: '32px', 
         
@@ -35,7 +34,6 @@ const Confirmation = () => {
         Thank you for choosing <strong>Let's Shyp</strong>. Your order is now in our system.
       </p>
 
-      {/* 2. ELEGANT REFERENCE CONTAINER */}
       <div className="ref-container" style={{ 
         background: 'var(--ls-blue-light)', 
         padding: '16px', 
@@ -74,7 +72,7 @@ const Confirmation = () => {
         </ul>
       </div>
 
-      {/* 4. NAVY BLUE BUTTON: Matched with primary theme */}
+    
       <button 
         className="next-btn" 
         style={{ 

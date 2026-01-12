@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 const Checkout = ({ data, updateData, onNext, onBack }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Helper: Validation Checks
+  //Validation Checks
   const isNameValid = data.customer.name.trim().length > 2;
   const isPhoneValid = /^\d{10}$/.test(data.customer.phone);
   const isFormValid = isNameValid && isPhoneValid;
@@ -65,7 +65,7 @@ const Checkout = ({ data, updateData, onNext, onBack }) => {
           disabled={isSubmitting}
         />
         
-        {/* Requirement: Dynamic Error Message */}
+        {/*Dynamic Error Message */}
         {data.customer.phone && data.customer.phone.length > 0 && data.customer.phone.length < 10 && (
           <p className="error-text" style={{ color: 'red', fontSize: '0.85rem', marginTop: '4px' }}>
             Please enter exactly 10 digits ({10 - data.customer.phone.length} digits left).

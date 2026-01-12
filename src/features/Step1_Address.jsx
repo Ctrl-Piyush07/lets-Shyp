@@ -8,6 +8,7 @@ const Address = ({ data, updateData, onNext }) => {
   const [dropError, setDropError] = useState("");
   const [generalError, setGeneralError] = useState("");
 
+  // Edge Case:Unservicable area case handling
   const BLOCKED_ZIPS = ['12345', '00000'];
   const isOnlyNumbers = (str) => /^\d+$/.test(str.replace(/\s/g, ''));
 
@@ -42,7 +43,7 @@ const Address = ({ data, updateData, onNext }) => {
       {/* PICKUP FIELD */}
       <div className="input-group">
         <label style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
-          {/* Colorful Badge for Pickup */}
+          
           <span style={{ backgroundColor: '#E8F0FE', padding: '8px', borderRadius: '50%', color: '#2D4A8A', display: 'flex' }}>
             <IoLocationOutline size={20} />
           </span>
@@ -64,7 +65,7 @@ const Address = ({ data, updateData, onNext }) => {
       {/* DROP FIELD */}
       <div className="input-group">
         <label style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
-          {/* Colorful Badge for Drop */}
+       
           <span style={{ backgroundColor: '#FFF9E6', padding: '8px', borderRadius: '50%', color: '#F57C00', display: 'flex' }}>
             <LuNavigation size={20} />
           </span>

@@ -6,7 +6,6 @@ const Summary = ({ data, onNext, onBack }) => {
 
   return (
     <div className="step-content">
-      {/* 1. DUPLICATE FIXED: Removed the <p> step-indicator line */}
       <h2>3. Pricing & Order Summary</h2>
       
       <div className="summary-card">
@@ -14,7 +13,6 @@ const Summary = ({ data, onNext, onBack }) => {
         <p><strong>Drop:</strong> {data.drop}</p>
         <p><strong>Vehicle:</strong> <span className="capitalize">{data.vehicle}</span></p>
         
-        {/* Instructions visibility fixed */}
         {data.notes && (
           <p><strong>Instructions:</strong> {data.notes}</p>
         )}
@@ -36,7 +34,7 @@ const Summary = ({ data, onNext, onBack }) => {
         </div>
       </div>
 
-      {/* Spacing and layout alignment for buttons */}
+    
       <div className="button-group" style={{ display: 'flex', gap: '15px', marginTop: '30px' }}>
         <button className="back-btn" style={{    flex: 1, 
             padding: '16px', 
