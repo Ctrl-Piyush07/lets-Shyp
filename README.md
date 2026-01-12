@@ -1,70 +1,40 @@
-# Getting Started with Create React App
+🚚 Let's Shyp - Easy Delivery Booking App
+Let's Shyp is a smart website where people can book a delivery truck or bike to move their stuff. It works like a storybook—you fill in one page, then move to the next until your order is ready.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+🛠️ How to start it
+Download the code to your computer.
 
-## Available Scripts
+Open your terminal and type npm install.
 
-In the project directory, you can run:
+Type npm start to see the app.
 
-### `npm start`
+✨ Smart Things This App Does (Edge Cases)
+I made the app "smart" so it doesn't make mistakes:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Dynamic Pricing: If you go back and change your vehicle (like picking a Truck instead of a Bike), the price updates instantly so you always see the correct cost.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+No Short Addresses: If you type a tiny address like "Home," the app asks for more detail so the driver doesn't get lost.
 
-### `npm test`
+No "Number-Only" Addresses: If you just type "12345," the app will say, "Hey! Give me a street name too!".
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The "Same Place" Warning: If you try to send a package from your house to your house, a big RED message appears.
 
-### `npm run build`
+Blocked Areas: If you enter a secret code like "12345," the app says, "Sorry, we don't go there yet!".
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Phone Guard: You can only type numbers for your phone, and it must be exactly 10 digits.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+🎨 Why it looks so good (UI Consistency)
+The "Magic" White Box: The main box never jumps or shakes. It stays the same size even if an error message pops up.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Follow the Buttons: The "Next" and "Back" buttons are always at the bottom of the box.
 
-### `npm run eject`
+Color Power: I used Navy Blue and Orange to make it look like a real brand.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Helpful Icons: I added colorful pictures like a location pin so you know exactly what to type.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+💡 Things to Know (Assumptions & Limitations)
+Pretend Payment: When you click "Pay," it spins for 2 seconds to show it's "thinking".
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+No Real Maps: You have to type the address yourself; the app doesn't suggest addresses from Google yet.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Address Detailing: Even though we stop "numbers-only" addresses, in a real business, we would need separate boxes for "House Number," "Street Name," and "Landmark" to make sure the driver never gets confused.
