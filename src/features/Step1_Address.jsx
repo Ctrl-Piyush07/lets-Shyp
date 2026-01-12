@@ -90,11 +90,11 @@ const Address = ({ data, updateData, onNext }) => {
           <span style={{ backgroundColor: '#F3F4F6', padding: '8px', borderRadius: '50%', color: '#757575', display: 'flex' }}>
             <AiOutlineFileText size={20} />
           </span>
-          <span style={{ fontWeight: '600', color: '#2D4A8A' }}>Instructions</span>
+          <span style={{ fontWeight: '600', color: '#2D4A8A' }}>Delivery Instructions</span>
           <span style={{ color: '#757575', fontSize: '0.8rem', fontWeight: '400', marginLeft: '5px' }}>(Optional)</span>
         </label>
         <textarea 
-          placeholder="Landmark or floor number..."
+          placeholder="Any specific instructions for our delivery partner..."
           value={data.notes}
           onChange={(e) => updateData({ notes: e.target.value })}
           style={{ minHeight: '80px', resize: 'none' }}
